@@ -108,6 +108,7 @@ th {
     background: var(--th-bg);
     color: white;
     padding: 14px;
+    text-align: left;
     text-transform: uppercase;
     font-size: 13px;
 }
