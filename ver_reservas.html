@@ -30,7 +30,6 @@
 
         <main>
 
-            {% if reservas %}
             <table class="tabla">
                 <thead>
                     <tr>
@@ -44,33 +43,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for reserva in reservas %}
                     <tr>
-                        <td>{{ reserva.id_reserva }}</td>
-                        <td>{{ reserva.cliente.nombre }}</td>
-                        <td>{{ reserva.habitacion.numero }}</td>
-                        <td>{{ reserva.fecha_inicio.strftime('%Y-%m-%d') }}</td>
-                        <td>{{ reserva.fecha_fin.strftime('%Y-%m-%d') }}</td>
-                        <td class="estado {{ reserva.estado | lower }}">
-                            {{ reserva.estado }}
-                        </td>
+                        <td>1</td>
+                        <td>Juan Pérez</td>
+                        <td>101</td>
+                        <td>2023-01-10</td>
+                        <td>2023-01-15</td>
+                        <td class="estado activa">Activa</td>
                         <td>
-                            {% if reserva.estado == 'Activa' %}
-                            <a class="btn" href="ver_reservas_empleados/{{ reserva.id_reserva }}">
-                                Ver detalles
-                            </a>
-                            {% endif %}
+                            <a class="btn" href="ver_reservas_empleados/1">Ver detalles</a>
                         </td>
                     </tr>
-                    {% endfor %}
+                    <tr>
+                        <td>2</td>
+                        <td>Ana García</td>
+                        <td>102</td>
+                        <td>2023-02-01</td>
+                        <td>2023-02-05</td>
+                        <td class="estado cancelada">Cancelada</td>
+                        <td>
+                            <a class="btn" href="ver_reservas_empleados/2">Ver detalles</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
-            {% else %}
             <div class="empty">
                 No hay reservas registradas.
             </div>
-            {% endif %}
 
         </main>
 
@@ -91,6 +91,5 @@
     </script>
 
 </body>
-
 
 </html>
