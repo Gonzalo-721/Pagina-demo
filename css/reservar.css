@@ -133,6 +133,7 @@ body {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    text-decoration: none;
     font-weight: 600;
 }
 
@@ -181,4 +182,5 @@ body.dark .flash.success {
 body.dark .flash.warning {
     background-color: #665c1e;
     color: #fff1b8;
+
 }
