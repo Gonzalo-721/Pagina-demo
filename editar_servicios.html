@@ -18,77 +18,65 @@
             </button>
         </header>
 
-        <form method="POST">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            <table class="tabla">
-                <thead>
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="1" selected>Servicio A - $20</option>
+                            <option value="2">Servicio B - $30</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" value="2" min="1">
+                    </td>
+                    <td>$40</td>
+                    <td>
+                        <a href="editar_servicios.html" class="btn btn-danger" onclick="return confirm('¿Eliminar este servicio?');">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
 
-                    <tr {% if c.marcado_eliminar %}style="text-decoration: line-through;" {% endif %}>
-                        <td>
-                            <select name="id_servicio[]">
-                                <option value="1" selected>Servicio A - $20</option>
-                                <option value="2">Servicio B - $30</option>
-                            </select>
-                        </td>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="">Selecciona nuevo servicio</option>
+                            <option value="3">Servicio C - $50</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" min="1">
+                    </td>
+                    <td>—</td>
+                    <td>
+                        <a href="editar_servicios.html" class="btn btn-primary">
+                            Añadir
+                        </a>
+                    </td>
+                </tr>
 
-                        <td>
-                            <input type="number" name="cantidad[]" value="2" min="1" {% if c.marcado_eliminar
-                                %}disabled{% endif %}>
-                        </td>
+            </tbody>
+        </table>
 
-                        <td>$40</td>
+        <div class="acciones">
+            <a href="dashboard_cliente.html" class="btn btn-success">
+                Confirmar cambios
+            </a>
+            <a href="dashboard_cliente.html" class="btn btn-danger">
+                Cancelar cambios
+            </a>
+        </div>
 
-                        <td>
-                            <button type="submit" name="accion" value="eliminar_1" class="btn btn-danger"
-                                onclick="return confirm('¿Eliminar este servicio?');">
-                                Eliminar
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <select name="id_servicio_nuevo">
-                                <option value="">Selecciona nuevo servicio</option>
-                                <option value="3">Servicio C - $50</option>
-                            </select>
-                        </td>
-
-                        <td>
-                            <input type="number" name="cantidad_nuevo" min="1">
-                        </td>
-
-                        <td>—</td>
-
-                        <td>
-                            <button type="submit" name="accion" value="añadir" class="btn btn-primary">
-                                Añadir
-                            </button>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-            <div class="acciones">
-                <button type="submit" name="accion" value="confirmar" class="btn btn-success">
-                    Confirmar cambios
-                </button>
-
-                <button type="submit" name="accion" value="cancelar" class="btn btn-danger">
-                    Cancelar cambios
-                </button>
-            </div>
-
-        </form>
     </div>
 
     <script>
@@ -101,10 +89,7 @@
 
         toggle.addEventListener('click', () => {
             body.classList.toggle('dark');
-            localStorage.setItem(
-                'dark-mode',
-                body.classList.contains('dark')
-            );
+            localStorage.setItem('dark-mode', body.classList.contains('dark'));
         });
     </script>
 
