@@ -146,6 +146,10 @@ tr:hover {
     color: #f1c40f;
 }
 
+.tabla td {
+    text-align: center;
+}
+
 .estado.cancelada {
     color: #e74c3c;
 }
@@ -156,4 +160,5 @@ tr:hover {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     min-width: 950px;
+
 }
