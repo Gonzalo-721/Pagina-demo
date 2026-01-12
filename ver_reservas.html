@@ -63,9 +63,10 @@
 
         toggle.addEventListener('click', () => {
             body.classList.toggle('dark');
+
             localStorage.setItem('dark-mode', body.classList.contains('dark'));
         });
-
+        
         const reservas = [
             { id: 1, cliente: 'Juan Pérez', habitacion: 101, inicio: '2023-01-10', fin: '2023-01-15', estado: 'Activa' },
             { id: 2, cliente: 'Ana García', habitacion: 102, inicio: '2023-02-01', fin: '2023-02-05', estado: 'Cancelada' }
@@ -87,7 +88,8 @@
                     <td>${reserva.inicio}</td>
                     <td>${reserva.fin}</td>
                     <td class="estado ${reserva.estado.toLowerCase()}">${reserva.estado}</td>
-                    <td><a class="btn" href="ver_reservas_empleados/${reserva.id}">Ver detalles</a></td>
+                    <!-- Modificamos el enlace a ver detalles -->
+                    <td><a class="btn" href="ver_reservas_empleados.html?id=${reserva.id}">Ver detalles</a></td>
                 `;
                 reservasLista.appendChild(fila);
             });
