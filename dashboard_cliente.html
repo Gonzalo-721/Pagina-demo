@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Cliente</title>
+    <link rel="stylesheet" href="css/dashboard_cliente.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>
+                Bienvenido/a {{ usuario.nombre }} !!!
+                <span>(Cliente)</span>
+            </h1>
+            <img src="images/logo.png" alt="Logo" class="header-logo">
+        </header>
+
+        <nav class="nav">
+            <a href="dashboard_cliente.html" class="nav-link">Inicio</a>
+            <a href="reservar.html" class="nav-link">Reservar</a>
+            <a href="logout.html" class="nav-link logout">Cerrar Sesión</a>
+
+            <button id="toggle-dark" class="nav-link nav-toggle" type="button">
+                🌙Modo oscuro
+            </button>
+        </nav>
+
+        <main>
+            <h2>Reservas</h2>
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>Habitación</th>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101 (Individual)</td>
+                        <td>2023-01-10</td>
+                        <td>2023-01-15</td>
+                        <td class="estado activa">Activa</td>
+                        <td class="acciones">
+                            <a href="detalles_reserva.html" class="btn">Ver detalles</a>
+                            <a href="pago_reserva.html" class="btn btn-secondary">Pagar</a>
+                            <a href="confirmar_cancelacion.html" class="btn btn-danger">Cancelar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'true') {
+            body.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            localStorage.setItem('dark-mode', body.classList.contains('dark'));
+        });
+    </script>
+
+</body>
+
+</html>

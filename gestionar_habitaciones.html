@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Habitaciones</title>
+    <link rel="stylesheet" href="css/gestionar_habitaciones.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Habitaciones</h1>
+            <img src="img/logo.png" alt="Logo" class="header-logo">
+        </header>
+
+        <nav class="nav">
+            <a href="dashboard_empleado.html" class="nav-link">Inicio</a>
+            <a href="ver_reservas.html" class="nav-link">Ver Reservas</a>
+            <a href="gestionar_habitaciones.html" class="nav-link">Habitaciones</a>
+            <a href="gestionar_servicios.html" class="nav-link">Servicios</a>
+            <a href="logout.html" class="nav-link logout">Cerrar Sesión</a>
+
+            <button id="toggle-dark" class="nav-link nav-toggle" type="button">
+                🌙 Modo oscuro
+            </button>
+        </nav>
+
+        <main>
+
+            <h2>Lista de habitaciones</h2>
+
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Número</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>101</td>
+                        <td>Individual</td>
+                        <td>$50</td>
+                        <td class="estado disponible">
+                            Disponible
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>102</td>
+                        <td>Doble</td>
+                        <td>$80</td>
+                        <td class="estado ocupada">
+                            Ocupada
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+    </div>
+
+    <script>
+        const toggle = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'true') {
+            body.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            localStorage.setItem('dark-mode', body.classList.contains('dark'));
+        });
+    </script>
+
+</body>
+
+</html>

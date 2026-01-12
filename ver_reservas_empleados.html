@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la reserva</title>
+    <link rel="stylesheet" href="css/ver_reservas_empleados.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Detalles de la reserva</h1>
+
+            <button id="toggle-dark" class="nav-toggle" type="button">🌙 Modo oscuro</button>
+        </header>
+
+        <!-- Aquí los mensajes de flash si los necesitas -->
+        <main>
+            <h2>Información general</h2>
+            <p><strong>Habitación:</strong> 101 (Individual)</p>
+            <p><strong>Fechas:</strong> 2023-01-10 → 2023-01-15</p>
+            <p><strong>Estado:</strong> Activa</p>
+            <p><strong>Precio por noche:</strong> $50</p>
+            <br>
+
+            <h2>Servicios consumidos</h2>
+            <ul>
+                <li>Servicio A (x1) — $50</li>
+                <li>Servicio B (x2) — $60</li>
+            </ul>
+
+            <br><br>
+
+            <h2>Total acumulado</h2>
+            <p class="total"><strong>$160</strong></p>
+
+            <div class="acciones">
+                <a href="dashboard_empleado.html" class="btn">Volver al dashboard</a>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const toggle = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'true') {
+            body.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            localStorage.setItem('dark-mode', body.classList.contains('dark'));
+        });
+    </script>
+
+</body>
+
+</html>

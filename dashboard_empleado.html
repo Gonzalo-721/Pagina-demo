@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Empleado</title>
+    <link rel="stylesheet" href="css/dashboard_empleado.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>
+                Bienvenido/a {{ usuario.nombre }} !!!
+                <span>(Empleado)</span>
+            </h1>
+
+            <img src="images/logo.png" alt="Logo" class="header-logo">
+        </header>
+
+        <nav class="nav">
+            <a href="dashboard_empleado.html" class="nav-link">Inicio</a>
+            <a href="ver_reservas.html" class="nav-link">Ver Reservas</a>
+            <a href="gestionar_habitaciones.html" class="nav-link">Habitaciones</a>
+            <a href="gestionar_servicios.html" class="nav-link">Servicios</a>
+            <a href="logout.html" class="nav-link logout">Cerrar Sesión</a>
+
+            <button id="toggle-dark" class="nav-link nav-toggle" type="button">
+                🌙Modo oscuro
+            </button>
+        </nav>
+
+        <main>
+            <h2>Lista de habitaciones</h2>
+
+            <div class="filtros">
+                <label for="filtro-nombre">Filtrar por cliente:</label>
+                <input type="text" id="filtro-nombre" placeholder="Buscar por nombre">
+
+                <label for="filtro-fecha">Filtrar por fecha (desde):</label>
+                <input type="date" id="filtro-fecha">
+            </div>
+            <br>
+            <table class="tabla" id="tabla-reservas">
+                <thead>
+                    <tr>
+                        <th>ID Reserva</th>
+                        <th>Cliente</th>
+                        <th>Habitación</th>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123</td>
+                        <td>Juan Pérez</td>
+                        <td>101 (Individual)</td>
+                        <td>2023-01-10</td>
+                        <td>2023-01-15</td>
+                        <td class="estado activa">Activa</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'true') {
+            body.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            localStorage.setItem('dark-mode', body.classList.contains('dark'));
+        });
+
+        document.getElementById('filtro-nombre').addEventListener('input', function () {
+            filtrarTabla();
+        });
+
+        document.getElementById('filtro-fecha').addEventListener('change', function () {
+            filtrarTabla();
+        });
+
+        function filtrarTabla() {
+            const nombreFiltro = document.getElementById('filtro-nombre').value.toLowerCase();
+            const fechaFiltro = document.getElementById('filtro-fecha').value;
+            const tabla = document.getElementById('tabla-reservas');
+            const filas = tabla.getElementsByTagName('tr');
+
+            for (let i = 1; i < filas.length; i++) {
+                const fila = filas[i];
+                const celdas = fila.getElementsByTagName('td');
+
+                const cliente = celdas[1].innerText.toLowerCase();
+                const fechaInicio = celdas[3].innerText;
+
+                const nombreCoincide = cliente.includes(nombreFiltro);
+                const fechaCoincide = fechaFiltro ? fechaInicio >= fechaFiltro : true;
+
+                if (nombreCoincide && fechaCoincide) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
