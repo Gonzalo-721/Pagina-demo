@@ -206,3 +206,17 @@ tr:hover {
 #filtro-fecha {
     width: 200px;
 }
+
+.tabla td.estado {
+    text-align: center;  
+}
+
+.tabla td {
+    text-align: left;
+}
+
+.tabla td.estado {
+    text-align: left;
+    align-items: center;
+    font-weight: bold;
+}
